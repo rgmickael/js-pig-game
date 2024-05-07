@@ -50,11 +50,11 @@ button:active{
 	height: 100vh;
 }
 
-.player.one{
+.player-0{
 	background-color: #4392f1;
 }
 
-.player.two{
+.player-1{
 	background-color: #f64841;
 }
 
@@ -67,6 +67,10 @@ button:active{
 	font-size: 2rem;
 }
 
+.player .name.active{
+	text-decoration: underline;
+}
+
 .player .score{
 	text-transform: uppercase;
 	font-size: 5rem;
@@ -75,21 +79,30 @@ button:active{
 .player .score .current{
 	font-size: 1.5rem;
 	vertical-align: middle;
-	display: none;
-}
-
-.dice{
-	display: none !important;
 }
 
 .dice img{
+	display: none;
 	width: 100px;
 	height: 100px;
 	position: fixed;
 	bottom: 50%;
 }
 
-@media (max-width: 768px){
+.dice img.one{
+	animation: "dice-shake" ease-in-out 0.2s;
+}
+
+@media (max-width: 1000px) and (min-width: 750px) {
+	.dice img{
+		width: 80px;
+		height: 80px;
+		position: fixed;
+		bottom: 45%;
+	}
+}
+
+@media (max-width: 750px){
 	.controls{
 		bottom: 0;
 	}
@@ -100,5 +113,12 @@ button:active{
 		position: fixed;
 		bottom: 55%;
 	}
+}
 
+@keyframes dice-shake {
+	0% { transform: translateX(0) }
+ 	25% { transform: translateX(5px) }
+ 	50% { transform: translateX(-5px) }
+ 	75% { transform: translateX(5px) }
+ 	100% { transform: translateX(0) }
 }
